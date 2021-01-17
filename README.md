@@ -1,1 +1,1 @@
-# js-client
+# @overbooked/js-client
