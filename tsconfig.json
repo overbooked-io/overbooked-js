@@ -12,7 +12,7 @@
     "jsx": "react",
     "baseUrl": ".",
     "lib": ["es2015", "dom.iterable", "es2016.array.include", "es2017.object", "dom"],
-    "module": "es6",
+    "module": "commonjs",
     "removeComments": true,
     "alwaysStrict": true,
     "allowUnreachableCode": false,
