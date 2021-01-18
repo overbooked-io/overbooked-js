@@ -1,4 +1,4 @@
-import { Resource, ResourceStatus } from "./../../model";
+import { Resource, ResourceStatus } from "./../../model/resource";
 import { Metadata } from "./../../model/metadata";
 import { Timezone } from "./../../model/timezone";
 import { Response, PaginatedResponse } from "./../shared/response";
