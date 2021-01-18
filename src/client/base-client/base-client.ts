@@ -4,7 +4,13 @@ import { Config } from "../config";
 export class BaseClient {
   private apiUrl = "https://api.overbooked.io";
 
-  public constructor(private config: Config) {}
+  public constructor(private config: Config) {
+    if (this.isBrowserRuntime() && !!config.secretKey) {
+      console.warn(
+        `Overbooked: It's not safe to use a Secret Key in client-side code. Learn more: https://docs.overbooked.io/api-reference/authentication#public-key-and-secret-key`
+      );
+    }
+  }
 
   public async call<R>(payload: {
     path: string;
@@ -34,11 +40,16 @@ export class BaseClient {
     }
   }
 
+  private isBrowserRuntime() {
+    console.log(!!window);
+    return !!window;
+  }
+
   private getApiKey() {
     const apiKey = this.config.secretKey || this.config.publicKey;
 
     if (!apiKey) {
-      console.warn("Overbooked Client: The API Key is not provided.");
+      console.warn("Overbooked: The API Key is not provided.");
     }
 
     return apiKey;
