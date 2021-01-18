@@ -6,7 +6,7 @@ export class BaseClient {
 
   public constructor(private config: Config) {
     if (this.isBrowserRuntime() && !!config.secretKey) {
-      console.warn(
+      console.error(
         `Overbooked: It's not safe to use a Secret Key in client-side code. Learn more: https://docs.overbooked.io/api-reference/authentication#public-key-and-secret-key`
       );
     }
