@@ -1,3 +1,9 @@
+/**
+ * The output timezone for all timestamps in the Resource.
+ * A list of possible time zone values is maintained at
+ * the IANA Time Zone Database.
+ *
+ */
 export type Timezone =
   | "Pacific/Niue"
   | "Pacific/Pago_Pago"
