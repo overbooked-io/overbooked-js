@@ -1,11 +1,10 @@
 import { Response, PaginatedResponse } from "./../shared/response";
-import { Booking, BookingStatus } from "./../../model/booking";
-import { Metadata } from "src/model/metadata";
+import { Overbooked } from "../../";
 
 export type BookingCreateParams = {
   slot_id: string;
   lock_key?: string;
-  metadata?: Metadata;
+  metadata?: Overbooked.Metadata;
 };
 
 export type BookingListParams = {
@@ -13,34 +12,40 @@ export type BookingListParams = {
   limit: number;
   slot_id?: string;
   resource_id?: string;
-  status?: BookingStatus;
+  status?: Overbooked.BookingStatus;
 };
 
 export type BookingUpdateParams = {
-  metadata?: Metadata;
+  metadata?: Overbooked.Metadata;
 };
 
 export type BookingRescheduleParams = {
   target_slot_id: string;
 };
-
 export interface IBookingClient {
-  create(params: BookingCreateParams): Promise<Response<Booking>>;
+  create(
+    params: Overbooked.BookingCreateParams
+  ): Promise<Response<Overbooked.Booking>>;
 
-  get(id: string): Promise<Response<Booking>>;
+  get(id: string): Promise<Response<Overbooked.Booking>>;
 
-  list(params: BookingListParams): Promise<PaginatedResponse<Booking[]>>;
+  list(
+    params: Overbooked.BookingListParams
+  ): Promise<PaginatedResponse<Overbooked.Booking[]>>;
 
-  update(id: string, params: BookingUpdateParams): Promise<Response<Booking>>;
+  update(
+    id: string,
+    params: Overbooked.BookingUpdateParams
+  ): Promise<Response<Overbooked.Booking>>;
 
   reschedule(
     id: string,
-    params: BookingRescheduleParams
-  ): Promise<Response<Booking>>;
+    params: Overbooked.BookingRescheduleParams
+  ): Promise<Response<Overbooked.Booking>>;
 
-  cancel(id: string): Promise<Response<Booking>>;
+  cancel(id: string): Promise<Response<Overbooked.Booking>>;
 
-  enable(id: string): Promise<Response<Booking>>;
+  enable(id: string): Promise<Response<Overbooked.Booking>>;
 
   delete(id: string): Promise<Response<Record<string, never>>>;
 }

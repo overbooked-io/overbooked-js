@@ -1,4 +1,4 @@
-import { Metadata } from "./metadata";
+import { Overbooked } from "./..";
 
 export type SlotStatus = "active" | "disabled";
 
@@ -12,15 +12,15 @@ export class Slot {
   public end_date: Date;
   public lockable: boolean;
   public locked_until: null | Date;
-  public metadata: Metadata;
+  public metadata: Overbooked.Metadata;
   public num_active_bookings: number;
   public num_bookings: number;
   public num_cancelled_bookings: number;
-  public status: SlotStatus;
+  public status: Overbooked.SlotStatus;
   public updated_at: Date;
   public created_at: Date;
 
-  public constructor(slot: Slot) {
+  public constructor(slot: Overbooked.Slot) {
     Object.assign(this, slot, {
       start_date: new Date(slot.start_date),
       end_date: new Date(slot.end_date),

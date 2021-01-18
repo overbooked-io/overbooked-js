@@ -1,11 +1,11 @@
 {
-  "name": "@overbooked/client",
+  "name": "@overbooked/overbooked-js",
   "author": {
     "name": "Overbooked",
     "email": "hello@overbooked.io",
     "url": "https://overbooked.io/"
   },
-  "version": "0.9.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

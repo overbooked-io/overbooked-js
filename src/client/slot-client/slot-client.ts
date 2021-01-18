@@ -1,45 +1,42 @@
-import { Slot } from "src/model/slot";
 import { BaseClient } from "../base-client/base-client";
 import { Response, PaginatedResponse } from "../shared/response";
-import {
-  ISlotClient,
-  SlotCreateParams,
-  SlotListParams,
-  SlotLockParams,
-  SlotUnlockParams,
-  SlotUpdateParams,
-} from "./slot-client.interface";
+import { Overbooked } from "../../";
 
-export class SlotClient implements ISlotClient {
+export class SlotClient implements Overbooked.ISlotClient {
   public constructor(private _baseClient: BaseClient) {}
 
   public async create(
-    params: SlotCreateParams | SlotCreateParams[]
-  ): Promise<Response<Slot[]>> {
-    const result = await this._baseClient.call<Response<Slot[]>>({
+    params: Overbooked.SlotCreateParams | Overbooked.SlotCreateParams[]
+  ): Promise<Response<Overbooked.Slot[]>> {
+    const result = await this._baseClient.call<Response<Overbooked.Slot[]>>({
       path: "/slots",
       method: "post",
       data: Array.isArray(params) ? params : [params],
     });
 
     return this._baseClient.normalizeResponse(result, "slot") as Response<
-      Slot[]
+      Overbooked.Slot[]
     >;
   }
 
-  public async get(id: string): Promise<Response<Slot>> {
-    const result = await this._baseClient.call<Response<Slot>>({
+  public async get(id: string): Promise<Response<Overbooked.Slot>> {
+    const result = await this._baseClient.call<Response<Overbooked.Slot>>({
       path: `/slots/${id}`,
       method: "get",
     });
 
-    return this._baseClient.normalizeResponse(result, "slot") as Response<Slot>;
+    return this._baseClient.normalizeResponse(
+      result,
+      "slot"
+    ) as Response<Overbooked.Slot>;
   }
 
   public async list(
-    params: SlotListParams
-  ): Promise<PaginatedResponse<Slot[]>> {
-    const result = await this._baseClient.call<PaginatedResponse<Slot[]>>({
+    params: Overbooked.SlotListParams
+  ): Promise<PaginatedResponse<Overbooked.Slot[]>> {
+    const result = await this._baseClient.call<
+      PaginatedResponse<Overbooked.Slot[]>
+    >({
       path: `/slots`,
       method: "get",
       params,
@@ -48,64 +45,79 @@ export class SlotClient implements ISlotClient {
     return this._baseClient.normalizeResponse(
       result,
       "slot"
-    ) as PaginatedResponse<Slot[]>;
+    ) as PaginatedResponse<Overbooked.Slot[]>;
   }
 
   public async update(
     id: string,
-    params: SlotUpdateParams
-  ): Promise<Response<Slot>> {
-    const result = await this._baseClient.call<Response<Slot>>({
+    params: Overbooked.SlotUpdateParams
+  ): Promise<Response<Overbooked.Slot>> {
+    const result = await this._baseClient.call<Response<Overbooked.Slot>>({
       path: `/slots/${id}`,
       method: "patch",
       data: params,
     });
 
-    return this._baseClient.normalizeResponse(result, "slot") as Response<Slot>;
+    return this._baseClient.normalizeResponse(
+      result,
+      "slot"
+    ) as Response<Overbooked.Slot>;
   }
 
-  public async enable(id: string): Promise<Response<Slot>> {
-    const result = await this._baseClient.call<Response<Slot>>({
+  public async enable(id: string): Promise<Response<Overbooked.Slot>> {
+    const result = await this._baseClient.call<Response<Overbooked.Slot>>({
       path: `/slots/${id}/enable`,
       method: "post",
     });
 
-    return this._baseClient.normalizeResponse(result, "slot") as Response<Slot>;
+    return this._baseClient.normalizeResponse(
+      result,
+      "slot"
+    ) as Response<Overbooked.Slot>;
   }
 
-  public async disable(id: string): Promise<Response<Slot>> {
-    const result = await this._baseClient.call<Response<Slot>>({
+  public async disable(id: string): Promise<Response<Overbooked.Slot>> {
+    const result = await this._baseClient.call<Response<Overbooked.Slot>>({
       path: `/slots/${id}/disable`,
       method: "post",
     });
 
-    return this._baseClient.normalizeResponse(result, "slot") as Response<Slot>;
+    return this._baseClient.normalizeResponse(
+      result,
+      "slot"
+    ) as Response<Overbooked.Slot>;
   }
 
   public async lock(
     id: string,
-    params: SlotLockParams
-  ): Promise<Response<Slot>> {
-    const result = await this._baseClient.call<Response<Slot>>({
+    params: Overbooked.SlotLockParams
+  ): Promise<Response<Overbooked.Slot>> {
+    const result = await this._baseClient.call<Response<Overbooked.Slot>>({
       path: `/slots/${id}/lock`,
       method: "post",
       data: params,
     });
 
-    return this._baseClient.normalizeResponse(result, "slot") as Response<Slot>;
+    return this._baseClient.normalizeResponse(
+      result,
+      "slot"
+    ) as Response<Overbooked.Slot>;
   }
 
   public async unlock(
     id: string,
-    params: SlotUnlockParams
-  ): Promise<Response<Slot>> {
-    const result = await this._baseClient.call<Response<Slot>>({
+    params: Overbooked.SlotUnlockParams
+  ): Promise<Response<Overbooked.Slot>> {
+    const result = await this._baseClient.call<Response<Overbooked.Slot>>({
       path: `/slots/${id}/unlock`,
       method: "post",
       data: params,
     });
 
-    return this._baseClient.normalizeResponse(result, "slot") as Response<Slot>;
+    return this._baseClient.normalizeResponse(
+      result,
+      "slot"
+    ) as Response<Overbooked.Slot>;
   }
 
   public async delete(

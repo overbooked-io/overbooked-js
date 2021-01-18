@@ -13,5 +13,6 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": "off",
     "react/display-name": "off",
     "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-namespace": "off"
   },
 };

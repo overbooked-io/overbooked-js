@@ -1,20 +1,14 @@
-import { Resource } from "./../../model/resource";
 import { BaseClient } from "../base-client/base-client";
 import { Response, PaginatedResponse } from "../shared/response";
-import {
-  IResourceClient,
-  ResourceCreateParams,
-  ResourceListParams,
-  ResourceUpdateParams,
-} from "./resource-client.interface";
+import { Overbooked } from "./../../";
 
-export class ResourceClient implements IResourceClient {
+export class ResourceClient implements Overbooked.IResourceClient {
   public constructor(private _baseClient: BaseClient) {}
 
   public async create(
-    params: ResourceCreateParams
-  ): Promise<Response<Resource>> {
-    const result = await this._baseClient.call<Response<Resource>>({
+    params: Overbooked.ResourceCreateParams
+  ): Promise<Response<Overbooked.Resource>> {
+    const result = await this._baseClient.call<Response<Overbooked.Resource>>({
       path: "/resources",
       method: "post",
       data: params,
@@ -23,11 +17,11 @@ export class ResourceClient implements IResourceClient {
     return this._baseClient.normalizeResponse(
       result,
       "resource"
-    ) as Response<Resource>;
+    ) as Response<Overbooked.Resource>;
   }
 
-  public async get(id: string): Promise<Response<Resource>> {
-    const result = await this._baseClient.call<Response<Resource>>({
+  public async get(id: string): Promise<Response<Overbooked.Resource>> {
+    const result = await this._baseClient.call<Response<Overbooked.Resource>>({
       path: `/resources/${id}`,
       method: "get",
     });
@@ -35,13 +29,15 @@ export class ResourceClient implements IResourceClient {
     return this._baseClient.normalizeResponse(
       result,
       "resource"
-    ) as Response<Resource>;
+    ) as Response<Overbooked.Resource>;
   }
 
   public async list(
-    params: ResourceListParams
-  ): Promise<PaginatedResponse<Resource[]>> {
-    const result = await this._baseClient.call<PaginatedResponse<Resource[]>>({
+    params: Overbooked.ResourceListParams
+  ): Promise<PaginatedResponse<Overbooked.Resource[]>> {
+    const result = await this._baseClient.call<
+      PaginatedResponse<Overbooked.Resource[]>
+    >({
       path: `/resources`,
       method: "get",
       params,
@@ -50,14 +46,14 @@ export class ResourceClient implements IResourceClient {
     return this._baseClient.normalizeResponse(
       result,
       "resource"
-    ) as PaginatedResponse<Resource[]>;
+    ) as PaginatedResponse<Overbooked.Resource[]>;
   }
 
   public async update(
     id: string,
-    params: ResourceUpdateParams
-  ): Promise<Response<Resource>> {
-    const result = await this._baseClient.call<Response<Resource>>({
+    params: Overbooked.ResourceUpdateParams
+  ): Promise<Response<Overbooked.Resource>> {
+    const result = await this._baseClient.call<Response<Overbooked.Resource>>({
       path: `/resources/${id}`,
       method: "patch",
       data: params,
@@ -66,11 +62,11 @@ export class ResourceClient implements IResourceClient {
     return this._baseClient.normalizeResponse(
       result,
       "resource"
-    ) as Response<Resource>;
+    ) as Response<Overbooked.Resource>;
   }
 
-  public async publish(id: string): Promise<Response<Resource>> {
-    const result = await this._baseClient.call<Response<Resource>>({
+  public async publish(id: string): Promise<Response<Overbooked.Resource>> {
+    const result = await this._baseClient.call<Response<Overbooked.Resource>>({
       path: `/resources/${id}/publish`,
       method: "post",
     });
@@ -78,11 +74,13 @@ export class ResourceClient implements IResourceClient {
     return this._baseClient.normalizeResponse(
       result,
       "resource"
-    ) as Response<Resource>;
+    ) as Response<Overbooked.Resource>;
   }
 
-  public async convertToDraft(id: string): Promise<Response<Resource>> {
-    const result = await this._baseClient.call<Response<Resource>>({
+  public async convertToDraft(
+    id: string
+  ): Promise<Response<Overbooked.Resource>> {
+    const result = await this._baseClient.call<Response<Overbooked.Resource>>({
       path: `/resources/${id}/convert-draft`,
       method: "post",
     });
@@ -90,7 +88,7 @@ export class ResourceClient implements IResourceClient {
     return this._baseClient.normalizeResponse(
       result,
       "resource"
-    ) as Response<Resource>;
+    ) as Response<Overbooked.Resource>;
   }
 
   public async delete(id: string): Promise<Response<Record<string, never>>> {

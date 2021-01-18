@@ -1,1 +1,1 @@
-# @overbooked/client
+# @overbooked/overbooked-js

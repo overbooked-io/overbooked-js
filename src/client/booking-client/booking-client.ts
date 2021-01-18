@@ -1,19 +1,14 @@
-import { Booking } from "src/model/booking";
 import { BaseClient } from "../base-client/base-client";
 import { Response, PaginatedResponse } from "../shared/response";
-import { BookingRescheduleParams } from "./booking-client.interface";
-import {
-  IBookingClient,
-  BookingCreateParams,
-  BookingListParams,
-  BookingUpdateParams,
-} from "./booking-client.interface";
+import { Overbooked } from "../../";
 
-export class BookingClient implements IBookingClient {
+export class BookingClient implements Overbooked.IBookingClient {
   public constructor(private _baseClient: BaseClient) {}
 
-  public async create(params: BookingCreateParams): Promise<Response<Booking>> {
-    const result = await this._baseClient.call<Response<Booking>>({
+  public async create(
+    params: Overbooked.BookingCreateParams
+  ): Promise<Response<Overbooked.Booking>> {
+    const result = await this._baseClient.call<Response<Overbooked.Booking>>({
       path: "/bookings",
       method: "post",
       data: params,
@@ -22,11 +17,11 @@ export class BookingClient implements IBookingClient {
     return this._baseClient.normalizeResponse(
       result,
       "booking"
-    ) as Response<Booking>;
+    ) as Response<Overbooked.Booking>;
   }
 
-  public async get(id: string): Promise<Response<Booking>> {
-    const result = await this._baseClient.call<Response<Booking>>({
+  public async get(id: string): Promise<Response<Overbooked.Booking>> {
+    const result = await this._baseClient.call<Response<Overbooked.Booking>>({
       path: `/bookings/${id}`,
       method: "get",
     });
@@ -34,13 +29,15 @@ export class BookingClient implements IBookingClient {
     return this._baseClient.normalizeResponse(
       result,
       "booking"
-    ) as Response<Booking>;
+    ) as Response<Overbooked.Booking>;
   }
 
   public async list(
-    params: BookingListParams
-  ): Promise<PaginatedResponse<Booking[]>> {
-    const result = await this._baseClient.call<PaginatedResponse<Booking[]>>({
+    params: Overbooked.BookingListParams
+  ): Promise<PaginatedResponse<Overbooked.Booking[]>> {
+    const result = await this._baseClient.call<
+      PaginatedResponse<Overbooked.Booking[]>
+    >({
       path: `/bookings`,
       method: "get",
       params,
@@ -49,14 +46,14 @@ export class BookingClient implements IBookingClient {
     return this._baseClient.normalizeResponse(
       result,
       "booking"
-    ) as PaginatedResponse<Booking[]>;
+    ) as PaginatedResponse<Overbooked.Booking[]>;
   }
 
   public async update(
     id: string,
-    params: BookingUpdateParams
-  ): Promise<Response<Booking>> {
-    const result = await this._baseClient.call<Response<Booking>>({
+    params: Overbooked.BookingUpdateParams
+  ): Promise<Response<Overbooked.Booking>> {
+    const result = await this._baseClient.call<Response<Overbooked.Booking>>({
       path: `/bookings/${id}`,
       method: "patch",
       data: params,
@@ -65,11 +62,11 @@ export class BookingClient implements IBookingClient {
     return this._baseClient.normalizeResponse(
       result,
       "booking"
-    ) as Response<Booking>;
+    ) as Response<Overbooked.Booking>;
   }
 
-  public async enable(id: string): Promise<Response<Booking>> {
-    const result = await this._baseClient.call<Response<Booking>>({
+  public async enable(id: string): Promise<Response<Overbooked.Booking>> {
+    const result = await this._baseClient.call<Response<Overbooked.Booking>>({
       path: `/bookings/${id}/enable`,
       method: "post",
     });
@@ -77,11 +74,11 @@ export class BookingClient implements IBookingClient {
     return this._baseClient.normalizeResponse(
       result,
       "booking"
-    ) as Response<Booking>;
+    ) as Response<Overbooked.Booking>;
   }
 
-  public async cancel(id: string): Promise<Response<Booking>> {
-    const result = await this._baseClient.call<Response<Booking>>({
+  public async cancel(id: string): Promise<Response<Overbooked.Booking>> {
+    const result = await this._baseClient.call<Response<Overbooked.Booking>>({
       path: `/bookings/${id}/cancel`,
       method: "post",
     });
@@ -89,14 +86,14 @@ export class BookingClient implements IBookingClient {
     return this._baseClient.normalizeResponse(
       result,
       "booking"
-    ) as Response<Booking>;
+    ) as Response<Overbooked.Booking>;
   }
 
   public async reschedule(
     id: string,
-    params: BookingRescheduleParams
-  ): Promise<Response<Booking>> {
-    const result = await this._baseClient.call<Response<Booking>>({
+    params: Overbooked.BookingRescheduleParams
+  ): Promise<Response<Overbooked.Booking>> {
+    const result = await this._baseClient.call<Response<Overbooked.Booking>>({
       path: `/bookings/${id}/reschedule`,
       method: "post",
       data: params,
@@ -105,7 +102,7 @@ export class BookingClient implements IBookingClient {
     return this._baseClient.normalizeResponse(
       result,
       "booking"
-    ) as Response<Booking>;
+    ) as Response<Overbooked.Booking>;
   }
 
   public async delete(

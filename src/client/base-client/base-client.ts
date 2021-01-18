@@ -1,12 +1,10 @@
 import axios, { Method } from "axios";
-import { Slot } from "../../model/slot";
-import { Resource } from "../../model/resource";
-import { Booking } from "../../model/booking";
 import { Config } from "../config";
 import { Response, PaginatedResponse } from "../shared/response";
+import { Overbooked } from "../../";
 
 type ObjectType = "resource" | "slot" | "booking";
-type ObjectClass = Resource | Slot | Booking;
+type ObjectClass = Overbooked.Resource | Overbooked.Slot | Overbooked.Booking;
 export class BaseClient {
   private apiUrl = "https://api.overbooked.io";
 
@@ -83,11 +81,11 @@ export class BaseClient {
   private normalizeObject(object: ObjectClass, type: ObjectType): ObjectClass {
     switch (type) {
       case "resource":
-        return new Resource(object as Resource);
+        return new Overbooked.Resource(object as Overbooked.Resource);
       case "slot":
-        return new Slot(object as Slot);
+        return new Overbooked.Slot(object as Overbooked.Slot);
       case "booking":
-        return new Booking(object as Booking);
+        return new Overbooked.Booking(object as Overbooked.Booking);
     }
   }
 

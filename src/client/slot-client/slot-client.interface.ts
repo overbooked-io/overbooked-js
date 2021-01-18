@@ -1,6 +1,5 @@
-import { Metadata } from "./../../model/metadata";
+import { Overbooked } from "./../../";
 import { Response, PaginatedResponse } from "./../shared/response";
-import { Slot } from "./../../model/slot";
 
 export type SlotCreateParams = {
   resource_id: string;
@@ -8,7 +7,7 @@ export type SlotCreateParams = {
   end_date: Date;
   capacity: number;
   lockable?: boolean;
-  metadata?: Metadata;
+  metadata?: Overbooked.Metadata;
 };
 
 export type SlotListParams = {
@@ -23,7 +22,7 @@ export type SlotListParams = {
 export type SlotUpdateParams = {
   start_date?: Date;
   end_date?: Date;
-  metadata?: Metadata;
+  metadata?: Overbooked.Metadata;
   lockable?: boolean;
   capacity?: number;
 };
@@ -38,22 +37,32 @@ export type SlotUnlockParams = {
 };
 
 export interface ISlotClient {
-  create(params: SlotCreateParams): Promise<Response<Slot[]>>;
-  create(params: SlotCreateParams[]): Promise<Response<Slot[]>>;
+  create(
+    params: Overbooked.SlotCreateParams
+  ): Promise<Response<Overbooked.Slot[]>>;
+  create(
+    params: Overbooked.SlotCreateParams[]
+  ): Promise<Response<Overbooked.Slot[]>>;
 
-  get(id: string): Promise<Response<Slot>>;
+  get(id: string): Promise<Response<Overbooked.Slot>>;
 
-  list(params: SlotListParams): Promise<PaginatedResponse<Slot[]>>;
+  list(params: SlotListParams): Promise<PaginatedResponse<Overbooked.Slot[]>>;
 
-  update(id: string, params: SlotUpdateParams): Promise<Response<Slot>>;
+  update(
+    id: string,
+    params: SlotUpdateParams
+  ): Promise<Response<Overbooked.Slot>>;
 
-  enable(id: string): Promise<Response<Slot>>;
+  enable(id: string): Promise<Response<Overbooked.Slot>>;
 
-  disable(id: string): Promise<Response<Slot>>;
+  disable(id: string): Promise<Response<Overbooked.Slot>>;
 
-  lock(id: string, params: SlotLockParams): Promise<Response<Slot>>;
+  lock(id: string, params: SlotLockParams): Promise<Response<Overbooked.Slot>>;
 
-  unlock(id: string, params: SlotUnlockParams): Promise<Response<Slot>>;
+  unlock(
+    id: string,
+    params: SlotUnlockParams
+  ): Promise<Response<Overbooked.Slot>>;
 
   delete(id: string): Promise<Response<Record<string, never>>>;
 }
