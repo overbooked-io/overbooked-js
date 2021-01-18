@@ -41,8 +41,7 @@ export class BaseClient {
   }
 
   private isBrowserRuntime() {
-    console.log(!!window);
-    return !!window;
+    return typeof window !== "undefined";
   }
 
   private getApiKey() {
