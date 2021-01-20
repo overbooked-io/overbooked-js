@@ -47,7 +47,7 @@ Node.js
 const { Overbooked } = require("@overbooked/overbooked-js");
 
 const overbooked = new Overbooked.Client({
-  publicKey: 'pk_xxxxxxx'
+  secretKey: 'sk_xxxxxxx'
 })
 
 const { data, meta, error, success } = await overbooked.resource.list({
