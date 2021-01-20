@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/overbooked-io/overbooked-js/workflows/Build/badge.svg?branch=master)
 
-The Stripe Javascript/Node.js SDK provides convenient access to Overbooked API from application written in client-side Javascript and server-side Node.js.
+The Overbooked Javascript/Node.js SDK provides convenient access to Overbooked API from application written in client-side Javascript and server-side Node.js.
 
 ## Documentation
 
