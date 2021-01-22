@@ -33,7 +33,7 @@ export interface IResourceClient {
   ): Promise<Response<Overbooked.Resource>>;
 
   /**
-   * public.booking.get
+   * public.resource.get
    *
    * Retrieves a Resource details.
    *

@@ -28,7 +28,7 @@ export class ResourceClient implements Overbooked.IResourceClient {
   }
 
   /**
-   * public.booking.get
+   * public.resource.get
    *
    * Retrieves a Resource details.
    *
