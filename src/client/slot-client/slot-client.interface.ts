@@ -40,16 +40,13 @@ export interface ISlotClient {
   /**
    * public.slot.create
    *
-   * Creates new Slot objects, that can be used to create Bookings.
+   * Creates new Slot object, that can be used to create Bookings.
    *
-   * https://docs.overbooked.io/api-reference/api-resources/slot/create-slots
+   * https://docs.overbooked.io/api-reference/api-resources/slot/create-slot
    */
   create(
     params: Overbooked.SlotCreateParams
-  ): Promise<Response<Overbooked.Slot[]>>;
-  create(
-    params: Overbooked.SlotCreateParams[]
-  ): Promise<Response<Overbooked.Slot[]>>;
+  ): Promise<Response<Overbooked.Slot>>;
 
   /**
    * public.slot.get

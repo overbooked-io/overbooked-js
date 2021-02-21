@@ -8,22 +8,23 @@ export class SlotClient implements Overbooked.ISlotClient {
   /**
    * public.slot.create
    *
-   * Creates new Slot objects, that can be used to create Bookings.
+   * Creates new Slot object, that can be used to create Bookings.
    *
-   * https://docs.overbooked.io/api-reference/api-resources/slot/create-slots
+   * https://docs.overbooked.io/api-reference/api-resources/slot/create-slot
    */
   public async create(
-    params: Overbooked.SlotCreateParams | Overbooked.SlotCreateParams[]
-  ): Promise<Response<Overbooked.Slot[]>> {
+    params: Overbooked.SlotCreateParams
+  ): Promise<Response<Overbooked.Slot>> {
     const result = await this._baseClient.call<Response<Overbooked.Slot[]>>({
       path: "/slots",
       method: "post",
-      data: Array.isArray(params) ? params : [params],
+      data: params,
     });
 
-    return this._baseClient.normalizeResponse(result, "slot") as Response<
-      Overbooked.Slot[]
-    >;
+    return this._baseClient.normalizeResponse(
+      result,
+      "slot"
+    ) as Response<Overbooked.Slot>;
   }
 
   /**
