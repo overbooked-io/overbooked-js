@@ -15,7 +15,7 @@ export class SlotClient implements Overbooked.ISlotClient {
   public async create(
     params: Overbooked.SlotCreateParams
   ): Promise<Response<Overbooked.Slot>> {
-    const result = await this._baseClient.call<Response<Overbooked.Slot[]>>({
+    const result = await this._baseClient.call<Response<Overbooked.Slot>>({
       path: "/slots",
       method: "post",
       data: params,

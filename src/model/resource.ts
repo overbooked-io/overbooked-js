@@ -2,6 +2,8 @@ import { Overbooked } from "../";
 
 export type ResourceStatus = "draft" | "published";
 
+export type ResourceSchedulingDefaultRule = "allow" | "disallow";
+
 /**
  * The Resource is a bucket for Slots and Bookings.
  *
@@ -123,6 +125,24 @@ export class Resource {
    * @type {number}
    */
   public booking_disabled_before: number;
+
+  /**
+   * A flag indicating whether the Slots can be scheduled
+   * publicly via API. (default: false)
+   *
+   * @type {boolean}
+   */
+  public public_scheduling_enabled: boolean;
+
+  /**
+   * A default behaviour of scheduling Slots via API.
+   * The default rule is either allow or disallow.
+   * It is valid only if public_scheduling_enabled
+   * is set to true. (default: allow)
+   *
+   * @type {Overbooked.ResourceSchedulingDefaultRule}
+   */
+  public scheduling_default_rule: Overbooked.ResourceSchedulingDefaultRule;
 
   /**
    * The date at which the object was last updated, in UTC in ISO 8601.
