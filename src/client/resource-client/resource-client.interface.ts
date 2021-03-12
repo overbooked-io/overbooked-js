@@ -6,7 +6,6 @@ export type ResourceCreateParams = {
   timezone: Overbooked.Timezone;
   metadata?: Overbooked.Metadata;
   public_scheduling_enabled?: boolean;
-  scheduling_default_rule?: Overbooked.ResourceSchedulingDefaultRule;
 };
 
 export type ResourceListParams = {
@@ -22,7 +21,6 @@ export type ResourceUpdateParams = {
   timezone?: Overbooked.Timezone;
   name?: string;
   public_scheduling_enabled?: boolean;
-  scheduling_default_rule?: Overbooked.ResourceSchedulingDefaultRule;
 };
 export interface IResourceClient {
   /**
